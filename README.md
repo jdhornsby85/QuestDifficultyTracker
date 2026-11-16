@@ -8,11 +8,54 @@ Each icon gets a colored ring, and the dots inside the icon are tinted the same 
 
 ## Install
 
-1. Copy the `QuestDifficultyColors` folder into
-   `World of Warcraft\_forever_\Interface\AddOns\`
-2. Restart the game or log out to character select, and make sure
-   **Quest Difficulty Colors** is ticked in the AddOns list.
-3. You'll see `QDC: loaded` in chat when it's running.
+Clone the repo somewhere outside the game folder, then get the `QuestDifficultyColors`
+folder (the one inside this repo, not the whole repo) into your Forever AddOns folder:
+
+```
+C:\Program Files (x86)\World of Warcraft\_forever_\Interface\AddOns\
+```
+
+You should end up with `AddOns\QuestDifficultyColors\QuestDifficultyColors.toc`.
+WoW only loads an addon whose folder name matches its `.toc`, so don't copy the
+`QuestDifficultyTracker` folder itself.
+
+### Option 1: copy the folder (simplest)
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/jdhornsby85/QuestDifficultyTracker.git
+   ```
+2. Copy `QuestDifficultyTracker\QuestDifficultyColors` into the AddOns folder above.
+
+To update later, `git pull` and copy the folder again.
+
+### Option 2: link it, so updates are automatic
+
+A directory junction makes the AddOns folder point at your clone, so after a
+`git pull` you only need `/reload` in game.
+
+1. Clone it somewhere permanent, e.g. `C:\Code`:
+   ```bash
+   git clone https://github.com/jdhornsby85/QuestDifficultyTracker.git C:/Code/QuestDifficultyTracker
+   ```
+2. If you already have a copied `QuestDifficultyColors` folder in AddOns, delete it first.
+3. In Command Prompt (cmd), create the link:
+   ```
+   mklink /J "C:\Program Files (x86)\World of Warcraft\_forever_\Interface\AddOns\QuestDifficultyColors" "C:\Code\QuestDifficultyTracker\QuestDifficultyColors"
+   ```
+
+To update later:
+```bash
+git -C C:/Code/QuestDifficultyTracker pull
+```
+
+### First launch
+
+1. The first time, log out to character select or restart the game (`/reload` doesn't
+   pick up a brand-new addon folder), and make sure **Quest Difficulty Colors** is
+   ticked in the AddOns list.
+2. You'll see `QDC: loaded` in chat when it's running.
+3. After that, `/reload` is enough to pick up changes.
 
 ## Commands
 
