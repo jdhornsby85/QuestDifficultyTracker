@@ -1,0 +1,8 @@
+## Interface: 16001
+## Title: Quest Difficulty Colors
+## Notes: Colors quest icons on the world map from grey (trivial) to red (very hard), with a skull for the hardest.
+## Author: jdhornsby85
+## Version: 1.0.0
+## SavedVariables: QuestDifficultyColorsDB
+
+QuestDifficultyColors.lua
